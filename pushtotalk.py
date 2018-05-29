@@ -60,32 +60,32 @@ CLOSE_MICROPHONE = embedded_assistant_pb2.DialogStateOut.CLOSE_MICROPHONE
 PLAYING = embedded_assistant_pb2.ScreenOutConfig.PLAYING
 DEFAULT_GRPC_DEADLINE = 60 * 3 + 5
 
-def buzzer():
-    SOUNDER = 21
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(SOUNDER, GPIO.OUT, initial = GPIO.LOW)
-
-    Hz = 440 * 3
-    p = GPIO.PWM(SOUNDER, 1)
-
-    p.ChangeFrequency(Hz)
-    p.start(50)
-    time.sleep(0.05)
-    p.stop()
-    time.sleep(0.05)
-    p.ChangeFrequency(Hz)
-    p.start(50)
-    time.sleep(0.05)
-    p.stop()
-    GPIO.cleanup()
+# def buzzer():
+#     SOUNDER = 21
+#     GPIO.setmode(GPIO.BCM)
+#     GPIO.setup(SOUNDER, GPIO.OUT, initial = GPIO.LOW)
+#
+#     Hz = 440 * 3
+#     p = GPIO.PWM(SOUNDER, 1)
+#
+#     p.ChangeFrequency(Hz)
+#     p.start(50)
+#     time.sleep(0.05)
+#     p.stop()
+#     time.sleep(0.05)
+#     p.ChangeFrequency(Hz)
+#     p.start(50)
+#     time.sleep(0.05)
+#     p.stop()
+#     GPIO.cleanup()
 
 def wait_button():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     while True:
-        GPIO.wait_for_edge(2, GPIO.FALLING)
-        sw_status = GPIO.input(2)
+        GPIO.wait_for_edge(26, GPIO.FALLING)
+        sw_status = GPIO.input(26)
         if sw_status == 0:
             break
         else:
@@ -161,8 +161,8 @@ class SampleAssistant(object):
         device_actions_futures = []
 
         self.conversation_stream.start_recording()
-        if self.hearing_mode:
-            buzzer()
+        # if self.hearing_mode:
+        #     buzzer()
         self.hearing_mode = True
         logging.info('Recording audio request.')
 

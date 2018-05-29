@@ -1,0 +1,11 @@
+{
+  "name": "tech1805",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:PasonaTechLab/tech1805.git",
+  "author": "minami <taminami@pasonatech.co.jp>",
+  "license": "MIT",
+  "dependencies": {
+    "google-home-notifier": "^1.2.0"
+  }
+}
