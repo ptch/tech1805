@@ -189,7 +189,7 @@ class SampleAssistant(object):
                 if matchObj:
                     if not self.notified:
                         name = re.sub(u"です$", "", req_text.encode('utf-8'))
-                        subprocess.Popen(['node', 'notify/example.js', name])
+                        subprocess.Popen(['node', 'notifier/notify.js', name])
                         self.notified = True
             if len(resp.audio_out.audio_data) > 0:
                 if not self.conversation_stream.playing:
