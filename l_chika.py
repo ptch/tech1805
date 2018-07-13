@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO_LED = 2
-GPIO.setwarning(False)
-GPIO.setmote(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(GPIO_LED, GPIO.OUT)
 while True:
     GPIO.output(GPIO_LED, GPIO.HIGH)
